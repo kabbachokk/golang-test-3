@@ -1,6 +1,8 @@
 package cli
 
 import (
+	"log"
+
 	"github.com/spf13/cobra"
 	"ip.com/app"
 )
@@ -17,4 +19,6 @@ func NewCliHandlers(
 	return &cliHandlers{uc, rc}
 }
 
-func (p *cliHandlers) Handler(cmd *cobra.Command, args []string) {}
+func (p *cliHandlers) RootHandler(cmd *cobra.Command, args []string) {
+	log.Print(args)
+}
