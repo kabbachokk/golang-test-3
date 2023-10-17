@@ -2,13 +2,19 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
+
 	"ip.com/config"
 )
 
 func NewMysqlConn(c *config.Config) (*sql.DB, error) {
-	db, err := sql.Open("mysql", "username:password@tcp(127.0.0.1:3306)/test")
+	// <username>:<password>@<addr>/<database>
+	db, err := sql.Open(
+		"mysql",
+		fmt.Sprintf("%s:%s@tcp(%s)/%s", c.MySQL.User, c.MySQL.Pass, c.MySQL.Addr, c.MySQL.DB),
+	)
 	if err != nil {
 		return nil, err
 	}

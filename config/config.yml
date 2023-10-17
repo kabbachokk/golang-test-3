@@ -1,0 +1,5 @@
+MySQL:
+  Addr: "sql.freedb.tech:3306"
+  User: "freedb_testuser1337"
+  Pass: "K3kZG&r#w@@q?Dw"
+  DB: "freedb_testing1337"

@@ -5,6 +5,14 @@ import (
 )
 
 type Config struct {
+	MySQL MySQL
+}
+
+type MySQL struct {
+	Addr string
+	User string
+	Pass string
+	DB   string
 }
 
 // ParseConfig Parse config file
