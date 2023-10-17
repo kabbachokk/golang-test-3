@@ -4,6 +4,9 @@ import (
 	"log"
 	"os"
 
+	"ip.com/app/delivery/cli"
+	"ip.com/app/repository"
+	"ip.com/app/usecase"
 	"ip.com/cmd"
 	"ip.com/config"
 	"ip.com/db"
@@ -25,7 +28,15 @@ func main() {
 	}
 	defer conn.Close()
 
-	if err := cmd.Execute(); err != nil {
+	repo := repository.NewMysqlRepo(conn)
+	uc := usecase.NewUseCase(repo)
+
+	rc := cmd.NewCmd() //rootCmd
+
+	handlers := cli.NewCliHandlers(uc, rc)
+	cli.SetupHandlers(handlers)
+
+	if err := rc.Execute(); err != nil {
 		log.Print(err)
 		os.Exit(1)
 	}
