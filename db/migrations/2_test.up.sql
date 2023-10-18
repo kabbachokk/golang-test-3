@@ -42,11 +42,12 @@ INSERT INTO `order` VALUES (15, NOW());
 #Заказ->Товар
 INSERT INTO `product_order` VALUES (6, 10, 1); #Микрофон
 INSERT INTO `product_order` VALUES (3, 10, 1); #Телефон
-INSERT INTO `product_order` VALUES (1, 10, 1); #Ноутбук
+INSERT INTO `product_order` VALUES (1, 10, 2); #Ноутбук
 
-INSERT INTO `product_order` VALUES (2, 11, 1); #Телевизор 
+INSERT INTO `product_order` VALUES (2, 11, 3); #Телевизор 
 
 INSERT INTO `product_order` VALUES (1, 14, 1); #Ноутбук 
+INSERT INTO `product_order` VALUES (4, 14, 4); #Системный блок
 
 INSERT INTO `product_order` VALUES (5, 15, 1); #Часы
 
