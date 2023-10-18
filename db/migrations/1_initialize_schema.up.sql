@@ -7,19 +7,21 @@ CREATE TABLE `product` (
 
 CREATE TABLE `order` (
 	`id` int NOT NULL,
+	`created_at` TIMESTAMP NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `product_order` (
-	`order_id` int NOT NULL,
 	`product_id` int NOT NULL,
-	`qty` int NOT NULL
+	`order_id` int NOT NULL,
+	`qty` int NOT NULL,
+	PRIMARY KEY (`order_id`, `product_id`)
 );
 
 CREATE TABLE `product_rack` (
-	`rack_id` int NOT NULL,
 	`product_id` int NOT NULL,
-	`name` varchar(200) NOT NULL
+	`rack_id` int NOT NULL,
+	`primary` boolean DEFAULT true
 );
 
 CREATE TABLE `rack` (
@@ -36,8 +38,7 @@ ALTER TABLE `product_rack` ADD CONSTRAINT `product_rack_fk0` FOREIGN KEY (`rack_
 
 ALTER TABLE `product_rack` ADD CONSTRAINT `product_rack_fk1` FOREIGN KEY (`product_id`) REFERENCES `product`(`id`);
 
-
-
+ALTER TABLE `product_rack` ADD UNIQUE `unique_index`(`product_id`, `primary`);
 
 
 
