@@ -5,11 +5,11 @@ import (
 )
 
 func NewCmd() *cobra.Command {
-	// здесь же можно добавлять команды приложения, типа server, ...
+	// здесь же можно добавлять команды приложения, типа search <s>, ...
 	return &cobra.Command{
 		Use:   "",
 		Short: "",
 		Long:  ``,
-		Run:   nil,
+		Run:   nil, // здесь должна быть точка входа
 	}
 }

@@ -4,12 +4,12 @@ import (
 	"log"
 	"os"
 
-	"ip.com/app/delivery/cli"
-	"ip.com/app/repository"
-	"ip.com/app/usecase"
-	"ip.com/cmd"
-	"ip.com/config"
-	"ip.com/db"
+	"github.com/kabbachokk/golang-test-3/app/delivery/cli"
+	"github.com/kabbachokk/golang-test-3/app/repository"
+	"github.com/kabbachokk/golang-test-3/app/usecase"
+	"github.com/kabbachokk/golang-test-3/cmd"
+	"github.com/kabbachokk/golang-test-3/config"
+	"github.com/kabbachokk/golang-test-3/db"
 )
 
 func main() {
@@ -18,8 +18,6 @@ func main() {
 		log.Print(err)
 		os.Exit(1)
 	}
-
-	log.Print(conf)
 
 	conn, err := db.NewMysqlConn(conf)
 	if err != nil {
@@ -31,12 +29,12 @@ func main() {
 	repo := repository.NewMysqlRepo(conn)
 	uc := usecase.NewUseCase(repo)
 
-	rc := cmd.NewCmd() //rootCmd
+	rootCmd := cmd.NewCmd()
 
-	handlers := cli.NewCliHandlers(uc, rc)
+	handlers := cli.NewCliHandlers(uc, rootCmd)
 	cli.SetupHandlers(handlers)
 
-	if err := rc.Execute(); err != nil {
+	if err := rootCmd.Execute(); err != nil {
 		log.Print(err)
 		os.Exit(1)
 	}

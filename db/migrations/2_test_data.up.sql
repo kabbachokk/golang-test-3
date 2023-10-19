@@ -50,5 +50,3 @@ INSERT INTO `product_order` VALUES (1, 14, 1); #Ноутбук
 INSERT INTO `product_order` VALUES (4, 14, 4); #Системный блок
 
 INSERT INTO `product_order` VALUES (5, 15, 1); #Часы
-
-

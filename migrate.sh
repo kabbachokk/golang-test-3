@@ -1,0 +1,1 @@
+migrate -source "file://./db/migrations" -database "mysql://freedb_testuser1337:K3kZG%26r%23w@@q%3FDw@tcp(sql.freedb.tech:3306)/freedb_testing1337?multiStatements=true" $@

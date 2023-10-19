@@ -1,4 +1,4 @@
-module ip.com
+module github.com/kabbachokk/golang-test-3
 
 go 1.19
 

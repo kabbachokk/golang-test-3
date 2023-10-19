@@ -6,7 +6,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 
-	"ip.com/config"
+	"github.com/kabbachokk/golang-test-3/config"
 )
 
 func NewMysqlConn(c *config.Config) (*sql.DB, error) {

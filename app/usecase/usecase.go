@@ -1,7 +1,8 @@
 package usecase
 
 import (
-	"ip.com/app"
+	"github.com/kabbachokk/golang-test-3/app"
+	"github.com/kabbachokk/golang-test-3/model"
 )
 
 // useCase
@@ -14,4 +15,8 @@ func NewUseCase(
 	repo app.MysqlRepository,
 ) *useCase {
 	return &useCase{repo}
+}
+
+func (uc *useCase) GetOrderRacksByOrderID(ids []int) ([]*model.OrderRacks, error) {
+	return uc.repo.QueryOrderRacksByOrderID(ids)
 }
