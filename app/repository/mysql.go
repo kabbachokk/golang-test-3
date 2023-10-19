@@ -18,15 +18,6 @@ func NewMysqlRepo(conn *sql.DB) *mysqlRepo {
 	return &mysqlRepo{conn}
 }
 
-type Row struct {
-	PrimaryRack    string
-	OrderID        int
-	ProductID      int
-	ProductName    string
-	Qty            int
-	SecondaryRacks string
-}
-
 func (r *mysqlRepo) QueryOrderRacksByOrderID(ids []int) ([]*model.OrderRacks, error) {
 	//ids := []int{10, 11, 14, 15}
 	sql := `
@@ -65,47 +56,3 @@ func (r *mysqlRepo) QueryOrderRacksByOrderID(ids []int) ([]*model.OrderRacks, er
 
 	return res, nil
 }
-
-/*
-SELECT product_id, GROUP_CONCAT(r.name SEPARATOR ' ')
-FROM product_rack pr
-INNER JOIN rack r ON r.id = pr.rack_id
-GROUP BY product_id;
-*/
-
-/*
-SELECT p.name, po.order_id, po.qty, pg.racks
-FROM product p
-INNER JOIN product_order po ON p.id = po.product_id
-INNER JOIN (
-    SELECT product_id, GROUP_CONCAT(r.name SEPARATOR ':') racks
-		FROM product_rack pr
-    	WHERE pr.primary != 1
-		INNER JOIN rack r ON r.id = pr.rack_id
-		GROUP BY product_id
-) pg ON p.id = pg.product_id
-INNER JOIN (
-    SELECT product_id, GROUP_CONCAT(r.name SEPARATOR ':') racks
-		FROM product_rack pr
-		INNER JOIN rack r ON r.id = pr.rack_id
-		GROUP BY product_id
-) pg ON p.id = pg.product_id
-*/
-
-/*
-CREATE TRIGGER after_product_rack_insert
-AFTER INSERT
-ON `product_rack` FOR EACH ROW
-BEGIN
-  	IF NEW.is_primary IS true THEN
-    	INSERT INTO `product_rack_names` SET
-    	product_id = NEW.product_id,
-    	p_name = (SELECT name FROM rack WHERE id = NEW.rack_id LIMIT 1),
-		s_name = NULL;
-	ELSE
-		UPDATE `product_rack_names` SET
-		s_name = CONCAT_WS(',', s_name, (SELECT name FROM rack WHERE id = NEW.rack_id LIMIT 1))
-		WHERE product_id = NEW.product_id;
-	END IF;
-END;
-*/
