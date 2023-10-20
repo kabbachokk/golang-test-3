@@ -4,5 +4,8 @@ import "github.com/kabbachokk/golang-test-3/model"
 
 // MysqlRepository
 type MysqlRepository interface {
-	QueryOrderRacksByOrderID(ids []int) ([]*model.OrderRacks, error)
+	QueryOrderProductsByOrderId(ids []int) ([]*model.ProductOrder, error)
+	QueryProductsById(ids []int) ([]*model.Product, error)
+	QueryRacksById(ids []int) ([]*model.Rack, error)
+	QueryProductRacksByProductId(ids []int) ([]*model.ProductRack, error)
 }
