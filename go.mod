@@ -2,17 +2,9 @@ module github.com/kabbachokk/golang-test-3
 
 go 1.19
 
-require (
-	github.com/golang-migrate/migrate/v4 v4.16.2
-	github.com/spf13/viper v1.17.0
-)
+require github.com/spf13/viper v1.17.0
 
-require (
-	github.com/hashicorp/errwrap v1.1.0 // indirect
-	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	go.uber.org/atomic v1.9.0 // indirect
-)
+require github.com/inconshreveable/mousetrap v1.1.0 // indirect
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -23,6 +15,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.1.0 // indirect
 	github.com/sagikazarmark/locafero v0.3.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
+	github.com/samber/lo v1.38.1
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spf13/afero v1.10.0 // indirect
 	github.com/spf13/cast v1.5.1 // indirect

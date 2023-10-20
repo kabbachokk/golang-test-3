@@ -44,9 +44,11 @@ func (p *cliHandlers) RootHandler(cmd *cobra.Command, args []string) {
 		}
 		fmt.Printf("\n%s (id=%d)", v.ProductName, v.ProductID)
 		fmt.Printf("\nзаказ %d, %dшт", v.OrderID, v.Qty)
+
 		if v.SecondaryRacks != "" {
 			fmt.Printf("\nдоп стеллаж: %s", v.SecondaryRacks)
 		}
+
 		fmt.Printf("\n")
 	}
 }

@@ -1,6 +1,6 @@
 package model
 
-type OrderRacks struct {
+type OrderRack struct {
 	PrimaryRack    string
 	OrderID        int
 	ProductID      int

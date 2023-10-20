@@ -17,6 +17,6 @@ func NewUseCase(
 	return &useCase{repo}
 }
 
-func (uc *useCase) GetOrderRacksByOrderID(ids []int) ([]*model.OrderRacks, error) {
+func (uc *useCase) GetOrderRacksByOrderID(ids []int) ([]*model.OrderRack, error) {
 	return uc.repo.QueryOrderRacksByOrderID(ids)
 }
